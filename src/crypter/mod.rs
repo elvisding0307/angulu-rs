@@ -1,4 +1,5 @@
 pub mod chacha20;
+pub mod sm4;
 
 use std::cmp::min;
 use std::marker;
@@ -16,6 +17,7 @@ use crate::*;
 /// 目前支持的所有算法
 pub enum CipherAlgorithm {
     ChaCha20,
+    Sm4,
 }
 
 /// 密码算法的类型
