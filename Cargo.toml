@@ -3,9 +3,10 @@ name = "angulu-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["Elvis Ding <elvisding0307@gmail.com>"]
-description = ""
-keywords = []
+description = "angulu-rs is a library, which contains some cipher components."
+keywords = ["crypter", "hash", "cipher"]
 license = "GPL-3.0"
+repository = "https://github.com/elvisding0307/angulu-rs"
 
 [lib]
 name = "angulu"
