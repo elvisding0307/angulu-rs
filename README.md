@@ -9,6 +9,7 @@ angulu-rs是一个密码学工具库。
 | 密码算法 | IV长度（Byte） | Key长度（Byte） | Block长度（Byte） | 算法类型 |
 | -------- | -------------- | --------------- | ----------------- | -------- |
 | ChaCha20 | 12             | 32              | 1                 | Stream   |
+| SM4      | 16             | 16              | 16                | Block    |
 
 ### encoding（编码工具）
 
@@ -29,8 +30,57 @@ angulu-rs是一个密码学工具库。
 
 ## 编译
 
-### 编译angulu库。
+### 基本编译
 
-```
+编译angulu库（开发模式）：
+```bash
 cargo build
 ```
+
+编译优化版本（发布模式）：
+```bash
+cargo build --release
+```
+
+### 测试
+
+运行所有测试：
+```bash
+cargo test
+```
+
+运行测试并显示输出：
+```bash
+cargo test -- --nocapture
+```
+
+### 文档生成
+
+生成并打开文档：
+```bash
+cargo doc --open
+```
+
+### 代码检查
+
+运行代码格式检查：
+```bash
+cargo fmt --check
+```
+
+运行代码质量检查：
+```bash
+cargo clippy
+```
+
+### 清理构建产物
+
+清理编译生成的文件：
+```bash
+cargo clean
+```
+
+### 系统要求
+
+- Rust 1.56.0 或更高版本（2021 edition）
+- 支持的平台：Linux、macOS、Windows

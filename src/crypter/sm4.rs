@@ -112,7 +112,7 @@ mod tests {
         
         // 优化后的字符串生成过程
         let pattern = "1234567890abcdefghij";
-        let target_length = 2000;
+        let target_length = 10_000;
         
         // 计算需要重复的完整次数和剩余字符数
         let full_repeats = target_length / pattern.len();
