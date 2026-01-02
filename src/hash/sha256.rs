@@ -1,8 +1,8 @@
 use ring::digest;
 use ring::digest::SHA256_OUTPUT_LEN;
 
-use crate::*;
 use crate::hash::HasherTrait;
+use crate::*;
 
 pub const SHA256_OUTPUT_LENGTH: usize = SHA256_OUTPUT_LEN;
 
@@ -46,8 +46,8 @@ impl HasherTrait for Sha256Hasher {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::encoding::hex::HexEncoding;
     use crate::encoding::EncodingTrait;
+    use crate::encoding::hex::HexEncoding;
 
     #[test]
     fn test_sha256_operation() {

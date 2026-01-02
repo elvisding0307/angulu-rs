@@ -1,8 +1,8 @@
 use ring::digest;
 use ring::digest::SHA512_OUTPUT_LEN;
 
-use crate::*;
 use crate::hash::HasherTrait;
+use crate::*;
 
 pub const SHA512_OUTPUT_LENGTH: usize = SHA512_OUTPUT_LEN;
 
@@ -46,8 +46,8 @@ impl HasherTrait for Sha512Hasher {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::encoding::hex::HexEncoding;
     use crate::encoding::EncodingTrait;
+    use crate::encoding::hex::HexEncoding;
 
     #[test]
     fn test_sha512_operation() {

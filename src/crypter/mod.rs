@@ -9,11 +9,11 @@ use std::vec;
 
 use rand::prelude::*;
 
-use crate::encoding::base64::Base64Encoding;
 use crate::encoding::EncodingTrait as _;
+use crate::encoding::base64::Base64Encoding;
+use crate::hash::HasherTrait;
 use crate::hash::crc::Crc32cHasher;
 use crate::hash::sha256::Sha256Hasher;
-use crate::hash::HasherTrait;
 use crate::*;
 
 /// 目前支持的所有算法
@@ -350,8 +350,8 @@ impl<CA: CipherAlgorithmTrait + IVKeyNewTrait, HR: HasherTrait + Default> String
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::encoding::hex::HexEncoding;
     use crate::encoding::EncodingTrait;
+    use crate::encoding::hex::HexEncoding;
 
     #[test]
     fn test_generate_key_from_password() {

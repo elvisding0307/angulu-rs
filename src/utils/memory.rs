@@ -10,7 +10,7 @@ use crate::*;
 pub type ByteVector = Vec<u8>;
 
 /// ByteArray是一个定长的字节容器，使用泛型常量参数N来指定数组大小
-/// 
+///
 /// 这个结构体提供了一个类型安全的方式来处理固定长度的字节数组，
 /// 相比于原生数组，它提供了更多的便利方法和trait实现
 #[derive(Debug, Clone)]
@@ -56,10 +56,10 @@ impl<const N: usize> DerefMut for ByteArray<N> {
 /// 实现PartialEq trait，允许ByteArray之间进行相等性比较
 impl<const N: usize> PartialEq for ByteArray<N> {
     /// 比较两个ByteArray是否相等
-    /// 
+    ///
     /// # 参数
     /// * `other` - 要比较的另一个ByteArray
-    /// 
+    ///
     /// # 返回值
     /// 如果两个数组的所有元素都相等则返回true，否则返回false
     fn eq(&self, other: &Self) -> bool {
@@ -70,7 +70,7 @@ impl<const N: usize> PartialEq for ByteArray<N> {
 /// 实现从&[u8; N]到ByteArray的转换
 impl<const N: usize> From<&[u8; N]> for ByteArray<N> {
     /// 从字节数组引用创建ByteArray
-    /// 
+    ///
     /// # 参数
     /// * `value` - 长度为N的字节数组引用
     fn from(value: &[u8; N]) -> Self {
@@ -81,7 +81,7 @@ impl<const N: usize> From<&[u8; N]> for ByteArray<N> {
 /// 实现从[u8; N]到ByteArray的转换
 impl<const N: usize> From<[u8; N]> for ByteArray<N> {
     /// 从字节数组创建ByteArray
-    /// 
+    ///
     /// # 参数
     /// * `value` - 长度为N的字节数组
     fn from(value: [u8; N]) -> Self {
@@ -92,10 +92,10 @@ impl<const N: usize> From<[u8; N]> for ByteArray<N> {
 /// 实现Display trait，允许ByteArray被格式化输出
 impl<const N: usize> fmt::Display for ByteArray<N> {
     /// 格式化ByteArray为字符串
-    /// 
+    ///
     /// # 参数
     /// * `f` - 格式化器
-    /// 
+    ///
     /// # 返回值
     /// 格式化结果
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -108,10 +108,10 @@ impl<const N: usize> ops::BitXor for ByteArray<N> {
     type Output = Self;
 
     /// 对两个ByteArray执行按位异或操作
-    /// 
+    ///
     /// # 参数
     /// * `rhs` - 右操作数ByteArray
-    /// 
+    ///
     /// # 返回值
     /// 异或结果的新ByteArray
     fn bitxor(self, rhs: Self) -> Self::Output {
@@ -128,10 +128,10 @@ impl<const N: usize> ops::Index<usize> for ByteArray<N> {
     type Output = u8;
 
     /// 通过索引获取ByteArray中指定位置的字节
-    /// 
+    ///
     /// # 参数
     /// * `index` - 要访问的索引位置
-    /// 
+    ///
     /// # 返回值
     /// 指定位置的字节引用
     fn index(&self, index: usize) -> &Self::Output {
@@ -142,10 +142,10 @@ impl<const N: usize> ops::Index<usize> for ByteArray<N> {
 /// 实现IndexMut trait，允许通过索引修改ByteArray中的元素
 impl<const N: usize> ops::IndexMut<usize> for ByteArray<N> {
     /// 通过索引获取ByteArray中指定位置的可变字节引用
-    /// 
+    ///
     /// # 参数
     /// * `index` - 要访问的索引位置
-    /// 
+    ///
     /// # 返回值
     /// 指定位置的可变字节引用
     fn index_mut(&mut self, index: usize) -> &mut Self::Output {
@@ -154,7 +154,7 @@ impl<const N: usize> ops::IndexMut<usize> for ByteArray<N> {
 }
 
 /// 内存获取器，用于从一块内存中顺序获取数据直到结束
-/// 
+///
 /// MemoryTaker提供了一种安全的方式来从字节切片中顺序读取数据，
 /// 它会跟踪当前读取位置，确保不会越界访问
 pub struct MemoryTaker<'a> {
@@ -168,10 +168,10 @@ pub struct MemoryTaker<'a> {
 
 impl<'a> MemoryTaker<'a> {
     /// 创建一个新的MemoryTaker实例
-    /// 
+    ///
     /// # 参数
     /// * `src` - 源字节切片
-    /// 
+    ///
     /// # 返回值
     /// 新的MemoryTaker实例
     pub fn new(src: &'a [u8]) -> MemoryTaker<'a> {
@@ -183,13 +183,13 @@ impl<'a> MemoryTaker<'a> {
     }
 
     /// 从内存中取出指定长度的数据到目标缓冲区
-    /// 
+    ///
     /// # 参数
     /// * `dst` - 目标缓冲区，其长度决定了要读取的字节数
-    /// 
+    ///
     /// # 返回值
     /// 成功时返回自身的可变引用，失败时返回错误
-    /// 
+    ///
     /// # 错误
     /// 当剩余内存不足时返回InsufficientMemoryContent错误
     pub fn take(&mut self, dst: &mut [u8]) -> Result<&mut Self> {
@@ -203,10 +203,10 @@ impl<'a> MemoryTaker<'a> {
     }
 
     /// 取出所有剩余的内存数据
-    /// 
+    ///
     /// # 返回值
     /// 成功时返回包含所有剩余数据的ByteVector，失败时返回错误
-    /// 
+    ///
     /// # 错误
     /// 当没有剩余数据时返回InsufficientMemoryContent错误
     pub fn take_all(&mut self) -> Result<ByteVector> {
@@ -220,14 +220,14 @@ impl<'a> MemoryTaker<'a> {
 }
 
 /// 内存拷贝函数，将源切片的数据复制到目标切片
-/// 
+///
 /// # 参数
 /// * `dst` - 目标字节切片
 /// * `src` - 源字节切片
-/// 
+///
 /// # 返回值
 /// 成功时返回Ok(())，失败时返回错误
-/// 
+///
 /// # 错误
 /// 当源和目标切片长度不匹配时返回MemoryLengthMismatch错误
 pub fn memcpy(dst: &mut [u8], src: &[u8]) -> Result<()> {
@@ -239,14 +239,14 @@ pub fn memcpy(dst: &mut [u8], src: &[u8]) -> Result<()> {
 }
 
 /// 内存异或函数，对两个字节切片执行按位异或操作
-/// 
+///
 /// # 参数
 /// * `src1` - 第一个源字节切片
 /// * `src2` - 第二个源字节切片
-/// 
+///
 /// # 返回值
 /// 成功时返回异或结果的ByteVector，失败时返回错误
-/// 
+///
 /// # 错误
 /// 当两个源切片长度不匹配时返回XorMemoryLengthMismatch错误
 pub fn xor(src1: &[u8], src2: &[u8]) -> Result<ByteVector> {

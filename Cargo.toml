@@ -1,6 +1,6 @@
 [package]
 name = "angulu"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 authors = ["Elvis Ding <elvisding0307@gmail.com>"]
 description = "angulu is a library, which contains some cipher components."

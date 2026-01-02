@@ -76,8 +76,8 @@ impl HasherTrait for Crc32cHasher {
 mod tests {
 
     use super::*;
-    use crate::encoding::hex::HexEncoding;
     use crate::encoding::EncodingTrait;
+    use crate::encoding::hex::HexEncoding;
 
     #[test]
     fn test_crc32_operation() {

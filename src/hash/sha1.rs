@@ -47,8 +47,8 @@ impl HasherTrait for Sha1Hasher {
 mod tests {
 
     use super::*;
-    use crate::encoding::hex::HexEncoding;
     use crate::encoding::EncodingTrait;
+    use crate::encoding::hex::HexEncoding;
 
     #[test]
     fn test_sha1_operation() {
